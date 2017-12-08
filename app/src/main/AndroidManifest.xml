@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="box.gift.ytime">
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="YTime"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:process="box.gift.ytime">
+
+        <activity
+            android:name=".MainActivity"
+            android:label="YTime">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".NoteUpdateService"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@drawable/bookclock">
+                <intent-filter>
+                    <action android:name="box.gift.ytime.NoteUpdateService" />
+                </intent-filter>
+        </service>
+
+        <receiver
+            android:enabled="true"
+            android:exported="true"
+            android:name="box.gift.ytime.RunOnStartup"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+
+        </receiver>
+
+    </application>
+
+</manifest>
